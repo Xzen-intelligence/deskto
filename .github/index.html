@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>量子意境 · 无边宇宙</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        cursor: none;
+    }
+    body {
+        background: #000;
+        min-height: 100vh;
+        overflow: hidden;
+        font-family: "Microsoft YaHei", sans-serif;
+        color: white;
+    }
+    .follow {
+        position: fixed;
+        width: 24px;
+        height: 24px;
+        background: #0ff;
+        border-radius: 50%;
+        pointer-events: none;
+        box-shadow: 0 0 12px #0ff, 0 0 24px #0ff;
+        z-index: 9999;
+        transition: 0.05s ease;
+    }
+    .text {
+        position: absolute;
+        color: rgba(255,255,255,0.85);
+        font-size: 19px;
+        white-space: nowrap;
+        animation: fadeIn 1.6s forwards;
+        text-shadow: 0 0 6px #fff, 0 0 12px #0ff;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(30px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+    .clickEffect {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border: 2px solid #0ff;
+        border-radius: 50%;
+        animation: clickAnim 0.6s ease-out forwards;
+        pointer-events: none;
+    }
+    @keyframes clickAnim {
+        0%   { transform: scale(0.2); opacity:1; }
+        100% { transform: scale(2.8); opacity:0; }
+    }
+</style>
+</head>
+
+<body>
+<div class="follow" id="follow"></div>
+
+<script>
+    // ======================
+    // 量子文字内容
+    // ======================
+    const texts = [
+        "量子代表 N",
+        "量子即无边意境",
+        "量子遵守能量守恒定律",
+        "量子散发出自身宏观的价值",
+        "量子定义：无限、平衡、纠缠、坍缩、交换",
+        "微观无处不在",
+        "宏观宇宙衡尺"
+    ];
+
+    // ======================
+    // 鼠标跟随
+    // ======================
+    const follow = document.getElementById('follow');
+    window.addEventListener('mousemove', (e) => {
+        follow.style.left = e.clientX - 6 + 'px';
+        follow.style.top = e.clientY - 6 + 'px';
+    });
+
+    // ======================
+    // 点击扩散特效
+    // ======================
+    window.addEventListener('click', (e) => {
+        let fx = document.createElement('div');
+        fx.className = 'clickEffect';
+        fx.style.left = e.clientX - 20 + 'px';
+        fx.style.top = e.clientY - 20 + 'px';
+        document.body.appendChild(fx);
+        setTimeout(() => fx.remove(), 700);
+    });
+
+    // ======================
+    // 文字自动随机飞入
+    // ======================
+    function showText() {
+        let t = document.createElement('div');
+        t.className = 'text';
+        t.innerText = texts[Math.floor(Math.random() * texts.length)];
+        t.style.left = Math.random() * 80 + 10 + 'vw';
+        t.style.top = Math.random() * 80 + 10 + 'vh';
+        document.body.appendChild(t);
+        setTimeout(() => t.style.opacity = 0, 3200);
+        setTimeout(() => t.remove(), 4000);
+    }
+    setInterval(showText, 1600);
+</script>
+</body>
+</html>
