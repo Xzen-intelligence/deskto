@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>  
 <meta charset="utf-8" />  
-<title>我的动态主页</title>  
+<title>.github/index.html</title>  
 <meta name="viewport" content="width=device-width,initial-scale=1" />  
 <style>body{font-family:Arial;text-align:center;padding:40px}</style>
 </head>
